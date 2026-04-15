@@ -28,9 +28,4 @@ public class Item {
     public int getValue() {
         return value;
     }
-
-    @Override
-    public String toString() {
-        return name + " (" + description + ") - Value: " + value;
-    }
 }
