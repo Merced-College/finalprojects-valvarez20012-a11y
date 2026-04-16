@@ -32,7 +32,7 @@ public class Dungeon {
 
         // Connect rooms
         entrance.addConnection(hallway);
-        // hallway.addConnection(entrance); // temporarily commented for testing
+        hallway.addConnection(entrance);
         hallway.addConnection(treasureRoom);
         hallway.addConnection(trapRoom);
         treasureRoom.addConnection(hallway);
