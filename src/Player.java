@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Stack;
 
 /*
@@ -13,14 +13,14 @@ public class Player {
     private String name;
     private int health;
     private int score;
-    private ArrayList<Item> inventory;
+    private HashMap<String, Item> inventory;
     private Stack<Room> movementHistory;
 
     public Player(String name) {
         this.name = name;
         this.health = 100;
         this.score = 0;
-        this.inventory = new ArrayList<>();
+        this.inventory = new HashMap<>();
         this.movementHistory = new Stack<>();
     }
 
@@ -48,32 +48,21 @@ public class Player {
         this.score += points;
     }
 
-    public ArrayList<Item> getInventory() {
+    public HashMap<String, Item> getInventory() {
         return inventory;
     }
 
     public void addItem(Item item) {
-        inventory.add(item);
+        inventory.put(item.getName().toLowerCase(), item);
         addScore(item.getValue());
     }
 
     public Item removeItem(String itemName) {
-        for (Item item : inventory) {
-            if (item.getName().equalsIgnoreCase(itemName)) {
-                inventory.remove(item);
-                return item;
-            }
-        }
-        return null;
+        return inventory.remove(itemName.toLowerCase());
     }
 
     public boolean hasItem(String itemName) {
-        for (Item item : inventory) {
-            if (item.getName().equalsIgnoreCase(itemName)) {
-                return true;
-            }
-        }
-        return false;
+        return inventory.containsKey(itemName.toLowerCase());
     }
 
     public void pushMovement(Room room) {

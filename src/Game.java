@@ -125,7 +125,7 @@ public class Game {
         } else {
             System.out.println("Inventory:");
             // Sort inventory by value using bubble sort
-            ArrayList<Item> items = new ArrayList<>(player.getInventory());
+            ArrayList<Item> items = new ArrayList<>(player.getInventory().values());
             bubbleSort(items);
             for (Item item : items) {
                 System.out.println("- " + item);
@@ -167,7 +167,7 @@ public class Game {
     Time Complexity: O(n)
     */
     public boolean searchInventory(String itemName) {
-        for (Item item : player.getInventory()) {
+        for (Item item : player.getInventory().values()) {
             if (item.getName().equalsIgnoreCase(itemName)) {
                 return true;
             }
