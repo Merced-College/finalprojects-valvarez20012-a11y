@@ -154,7 +154,7 @@ public class Game {
         int n = items.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {
-                if (items.get(j).getValue() > items.get(j + 1).getValue()) {
+                if (items.get(j).getValue() < items.get(j + 1).getValue()) { // wrong comparison
                     Collections.swap(items, j, j + 1);
                 }
             }
