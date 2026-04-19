@@ -20,14 +20,38 @@ public class Game {
         scanner = new Scanner(System.in);
         System.out.print("Enter your name: ");
         String name = scanner.nextLine();
-        player = new Player(name);
+        
+        System.out.println("Choose your character class:");
+        System.out.println("1. Warrior (High health, strong in combat)");
+        System.out.println("2. Mage (Low health, magical abilities)");
+        System.out.println("3. Rogue (Balanced, stealthy)");
+        System.out.print("Enter 1, 2, or 3: ");
+        
+        String classChoice = scanner.nextLine();
+        String characterClass;
+        switch (classChoice) {
+            case "1":
+                characterClass = "Warrior";
+                break;
+            case "2":
+                characterClass = "Mage";
+                break;
+            case "3":
+                characterClass = "Rogue";
+                break;
+            default:
+                characterClass = "Adventurer";
+                break;
+        }
+        
+        player = new Player(name, characterClass);
         dungeon = new Dungeon();
         currentRoom = dungeon.getStartRoom();
         player.pushMovement(currentRoom);
     }
 
     public void start() {
-        System.out.println("Welcome to the Dungeon Adventure Game, " + player.getName() + "!");
+        System.out.println("Welcome to the Dungeon Adventure Game, " + player.getName() + " the " + player.getCharacterClass() + "!");
         System.out.println("Your goal is to explore the dungeon, collect treasures, and reach the exit.");
         System.out.println("Type 'help' for commands.\n");
 
@@ -49,8 +73,8 @@ public class Game {
                 displayRoom();
             } else if (command.equals("undo")) {
                 undoMove();
-            } else if (command.equals("score")) {
-                System.out.println("Your score: " + player.getScore());
+            } else if (command.equals("status")) {
+                showStatus();
             } else {
                 System.out.println("Unknown command. Type 'help' for commands.");
             }
@@ -95,6 +119,7 @@ public class Game {
         System.out.println("inventory - Show your inventory");
         System.out.println("look - Look around the current room");
         System.out.println("undo - Undo last move");
+        System.out.println("status - Show player status");
         System.out.println("score - Show current score");
         System.out.println("quit - Quit the game");
     }
@@ -134,16 +159,12 @@ public class Game {
         }
     }
 
-    private void undoMove() {
-        if (player.canUndo()) {
-            Room previous = player.popMovement();
-            if (previous != null) {
-                currentRoom = previous;
-                System.out.println("Moved back to " + currentRoom.getName());
-            }
-        } else {
-            System.out.println("Can't undo further.");
-        }
+    private void showStatus() {
+        System.out.println("Player Status:");
+        System.out.println("Name: " + player.getName());
+        System.out.println("Health: " + player.getHealth());
+        System.out.println("Score: " + player.getScore());
+        System.out.println("Inventory items: " + player.getInventory().size());
     }
 
     /*

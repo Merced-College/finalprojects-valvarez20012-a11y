@@ -11,21 +11,42 @@ and movement history using Stack for undo functionality.
 */
 public class Player {
     private String name;
+    private String characterClass;
     private int health;
     private int score;
     private HashMap<String, Item> inventory;
     private Stack<Room> movementHistory;
 
-    public Player(String name) {
+    public Player(String name, String characterClass) {
         this.name = name;
-        this.health = 100;
+        this.characterClass = characterClass;
         this.score = 0;
         this.inventory = new HashMap<>();
         this.movementHistory = new Stack<>();
+        
+        // Set starting stats based on class
+        switch (characterClass.toLowerCase()) {
+            case "warrior":
+                this.health = 120; // Higher health
+                break;
+            case "mage":
+                this.health = 80; // Lower health but maybe magic abilities later
+                break;
+            case "rogue":
+                this.health = 100; // Balanced
+                break;
+            default:
+                this.health = 100; // Default
+                break;
+        }
     }
 
     public String getName() {
         return name;
+    }
+
+    public String getCharacterClass() {
+        return characterClass;
     }
 
     public int getHealth() {
@@ -82,6 +103,6 @@ public class Player {
 
     @Override
     public String toString() {
-        return "Player: " + name + " | Health: " + health + " | Score: " + score;
+        return "Player: " + name + " (" + characterClass + ") | Health: " + health + " | Score: " + score;
     }
 }
