@@ -29,6 +29,7 @@ public class Dungeon {
         treasureRoom.addItem(new Item("Gold Coin", "A shiny gold coin", 10));
         treasureRoom.addItem(new Item("Silver Ring", "A beautiful silver ring", 20));
         trapRoom.addItem(new Item("Magic Potion", "A potion that restores health", 15));
+        trapRoom.addItem(new Item("Ancient Key", "A rusty key that might open something", 5));
 
         // Connect rooms
         entrance.addConnection(hallway);
