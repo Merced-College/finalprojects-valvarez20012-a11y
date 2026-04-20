@@ -28,6 +28,7 @@ public class Game {
 
     public void start() {
         System.out.println("Welcome to the Dungeon Adventure Game, " + player.getName() + "!");
+        System.out.println("Your goal is to explore the dungeon, collect treasures, and reach the exit.");
         System.out.println("Type 'help' for commands.\n");
 
         while (true) {
