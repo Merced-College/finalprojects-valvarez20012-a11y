@@ -20,6 +20,15 @@ A text-based adventure game where players explore a dungeon, navigate through in
 - Simple scoring system
 - Undo functionality with Stack
 - Recursive room exploration algorithm
+- Character class selection (Warrior/Mage/Rogue)
+
+## Class Overview
+- **Main**: Entry point, starts the game
+- **Game**: Handles user input, commands, and game logic
+- **Player**: Manages character stats, inventory, and movement
+- **Room**: Represents dungeon rooms with items and connections
+- **Dungeon**: Creates and connects rooms, explores via recursion
+- **Item**: Defines collectible items with name, description, value
 
 ## Data Structures Used
 - **LinkedList**: For room sequences and player movement history
