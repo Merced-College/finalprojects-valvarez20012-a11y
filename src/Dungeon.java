@@ -31,6 +31,10 @@ public class Dungeon {
         trapRoom.addItem(new Item("Magic Potion", "A potion that restores health", 15));
         trapRoom.addItem(new Item("Ancient Key", "A rusty key that might open something", 5));
 
+        // Add NPCs
+        entrance.addNpc(new NPC("Old Man", "A wise old man with a long beard.", "Ancient Key", "That key looks familiar... I think it opens the way to the exit in the trap room."));
+        hallway.addNpc(new NPC("Guard", "A stern-looking guard blocking the way.", "Magic Potion", "Ah, a potion! These are useful for healing wounds from traps."));
+
         // Connect rooms
         entrance.addConnection(hallway);
         hallway.addConnection(entrance);

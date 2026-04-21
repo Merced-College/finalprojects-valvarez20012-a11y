@@ -14,6 +14,7 @@ public class Room {
     private String name;
     private String description;
     private ArrayList<Item> items;
+    private ArrayList<NPC> npcs;
     private LinkedList<Room> connectedRooms;
     private boolean visited;
 
@@ -21,6 +22,7 @@ public class Room {
         this.name = name;
         this.description = description;
         this.items = new ArrayList<>();
+        this.npcs = new ArrayList<>();
         this.connectedRooms = new LinkedList<>();
         this.visited = false;
     }
@@ -49,6 +51,14 @@ public class Room {
             }
         }
         return null;
+    }
+
+    public ArrayList<NPC> getNpcs() {
+        return npcs;
+    }
+
+    public void addNpc(NPC npc) {
+        npcs.add(npc);
     }
 
     public LinkedList<Room> getConnectedRooms() {

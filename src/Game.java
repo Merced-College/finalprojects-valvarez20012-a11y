@@ -73,6 +73,8 @@ public class Game {
                 displayRoom();
             } else if (command.equals("undo")) {
                 undoMove();
+            } else if (command.startsWith("talk ")) {
+                talkToNpc(command.substring(5));
             } else if (command.equals("status")) {
                 showStatus();
             } else {
@@ -101,6 +103,13 @@ public class Game {
             }
         }
 
+        if (!currentRoom.getNpcs().isEmpty()) {
+            System.out.println("People here:");
+            for (NPC npc : currentRoom.getNpcs()) {
+                System.out.println("- " + npc.getName());
+            }
+        }
+
         System.out.println("Connected rooms:");
         for (Room room : currentRoom.getConnectedRooms()) {
             System.out.println("- " + room.getName());
@@ -116,11 +125,11 @@ public class Game {
         System.out.println("Commands:");
         System.out.println("go <room> - Move to a connected room");
         System.out.println("take <item> - Take an item from the current room");
+        System.out.println("talk <npc> - Talk to a person in the room");
         System.out.println("inventory - Show your inventory");
         System.out.println("look - Look around the current room");
         System.out.println("undo - Undo last move");
         System.out.println("status - Show player status");
-        System.out.println("score - Show current score");
         System.out.println("quit - Quit the game");
     }
 
@@ -165,6 +174,41 @@ public class Game {
         System.out.println("Health: " + player.getHealth());
         System.out.println("Score: " + player.getScore());
         System.out.println("Inventory items: " + player.getInventory().size());
+    }
+
+    private void undoMove() {
+        if (player.canUndo()) {
+            Room previous = player.popMovement();
+            if (previous != null) {
+                currentRoom = previous;
+                System.out.println("Moved back to " + currentRoom.getName());
+            }
+        } else {
+            System.out.println("Can't undo further.");
+        }
+    }
+
+    private void talkToNpc(String npcName) {
+        for (NPC npc : currentRoom.getNpcs()) {
+            if (npc.getName().equalsIgnoreCase(npcName)) {
+                System.out.println(npc.getDescription());
+                
+                // Check for hints based on items
+                boolean gaveHint = false;
+                for (Item item : player.getInventory().values()) {
+                    if (npc.hasHintForItem(item.getName())) {
+                        System.out.println("Hint: " + npc.getHintMessage());
+                        gaveHint = true;
+                        break;
+                    }
+                }
+                if (!gaveHint) {
+                    System.out.println("The " + npc.getName() + " doesn't have anything special to say right now.");
+                }
+                return;
+            }
+        }
+        System.out.println("No one by that name here.");
     }
 
     /*
