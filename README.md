@@ -22,6 +22,7 @@ A text-based adventure game where players explore a dungeon, navigate through in
 - Recursive room exploration algorithm
 - Character class selection (Warrior/Mage/Rogue)
 - NPC interactions with item-based hints
+- Brief room descriptions and atmospheric NPC dialogue
 
 ## Class Overview
 - **Main**: Entry point, starts the game
