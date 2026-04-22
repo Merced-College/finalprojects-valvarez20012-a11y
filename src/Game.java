@@ -75,6 +75,8 @@ public class Game {
                 undoMove();
             } else if (command.startsWith("talk ")) {
                 talkToNpc(command.substring(5));
+            } else if (command.equals("brief")) {
+                showBrief();
             } else if (command.equals("status")) {
                 showStatus();
             } else {
@@ -126,6 +128,7 @@ public class Game {
         System.out.println("go <room> - Move to a connected room");
         System.out.println("take <item> - Take an item from the current room");
         System.out.println("talk <npc> - Talk to a person in the room");
+        System.out.println("brief - Get a brief description of the room");
         System.out.println("inventory - Show your inventory");
         System.out.println("look - Look around the current room");
         System.out.println("undo - Undo last move");
@@ -209,6 +212,27 @@ public class Game {
             }
         }
         System.out.println("No one by that name here.");
+    }
+
+    private void showBrief() {
+        System.out.println("Brief: " + currentRoom.getName() + " - " + getBriefDescription(currentRoom.getName()));
+    }
+
+    private String getBriefDescription(String roomName) {
+        switch (roomName) {
+            case "Entrance":
+                return "Dark and foreboding entryway with a cold draft.";
+            case "Hallway":
+                return "Long corridor with flickering torches and echoes.";
+            case "Treasure Room":
+                return "Glistening chamber filled with valuable treasures.";
+            case "Trap Room":
+                return "Dangerous area with hidden traps and obstacles.";
+            case "Exit":
+                return "Bright opening leading to freedom.";
+            default:
+                return "An unknown room.";
+        }
     }
 
     /*
