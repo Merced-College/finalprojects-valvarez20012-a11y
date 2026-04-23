@@ -70,7 +70,7 @@ public class Game {
             } else if (command.equals("inventory")) {
                 showInventory();
             } else if (command.equals("look")) {
-                displayRoom();
+                lookAround();
             } else if (command.equals("undo")) {
                 undoMove();
             } else if (command.startsWith("talk ")) {
@@ -157,10 +157,38 @@ public class Game {
         System.out.println("talk <npc> - Talk to a person in the room");
         System.out.println("brief - Get a brief description of the room");
         System.out.println("inventory - Show your inventory");
-        System.out.println("look - Look around the current room");
+        System.out.println("look - Look around the current room with item and NPC details");
         System.out.println("undo - Undo last move");
         System.out.println("status - Show player status");
         System.out.println("quit - Quit the game");
+    }
+
+    private void lookAround() {
+        System.out.println("\n" + currentRoom.getName());
+        System.out.println(currentRoom.getDescription());
+
+        if (!currentRoom.getItems().isEmpty()) {
+            System.out.println("Items here:");
+            for (Item item : currentRoom.getItems()) {
+                System.out.println("- " + item.getName() + ": " + item.getDescription());
+            }
+        } else {
+            System.out.println("No items are visible right now.");
+        }
+
+        if (!currentRoom.getNpcs().isEmpty()) {
+            System.out.println("People here:");
+            for (NPC npc : currentRoom.getNpcs()) {
+                System.out.println("- " + npc.getName() + ": " + npc.getDescription());
+            }
+        } else {
+            System.out.println("No one else is present in this room.");
+        }
+
+        System.out.println("Connected rooms:");
+        for (Room room : currentRoom.getConnectedRooms()) {
+            System.out.println("- " + room.getName());
+        }
     }
 
     private void move(String roomName) {
