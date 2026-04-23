@@ -15,11 +15,13 @@ public class Player {
     private int health;
     private int score;
     private boolean oracleMet;
+    private boolean tookCampingSuppliesBeforeOracle;
     private HashMap<String, Item> inventory;
     private Stack<Room> movementHistory;
 
     public Player(String name, String characterClass) {
         this.oracleMet = false;
+        this.tookCampingSuppliesBeforeOracle = false;
         this.name = name;
         this.characterClass = characterClass;
         this.score = 0;
@@ -109,6 +111,14 @@ public class Player {
 
     public void setOracleMet(boolean oracleMet) {
         this.oracleMet = oracleMet;
+    }
+
+    public boolean tookCampingSuppliesBeforeOracle() {
+        return tookCampingSuppliesBeforeOracle;
+    }
+
+    public void setTookCampingSuppliesBeforeOracle(boolean tookCampingSuppliesBeforeOracle) {
+        this.tookCampingSuppliesBeforeOracle = tookCampingSuppliesBeforeOracle;
     }
 
     @Override

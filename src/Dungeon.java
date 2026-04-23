@@ -26,6 +26,7 @@ public class Dungeon {
         Room gatewayEternity = new Room("Gateway to Eternity", "A shimmering portal leading to realms beyond, the same gateway the condemned warrior used to flee into this mystical realm, forever marked by his transgression.");
 
         // Add items to rooms with story-consistent descriptions
+        oracleChamber.addItem(new Item("Oracle's Camping Supplies", "A weathered backpack containing essential supplies for mystical journeys - blankets, rations, and mystical herbs for safe passage", 10));
         pantheonGods.addItem(new Item("Divine Amulet", "A sacred amulet that once belonged to the warrior during his trial, bearing the mark of divine judgment", 25));
         pantheonGods.addItem(new Item("Crystal Shard", "A fragment of the crystal that shattered during the warrior's guilty verdict, still pulsing with the echoes of judgment", 15));
         labyrinthTrials.addItem(new Item("Elixir of Clarity", "A potion that clears the mind, much like the clarity the warrior sought during his frantic escape through these passages", 20));

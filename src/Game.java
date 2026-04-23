@@ -204,6 +204,11 @@ public class Game {
         if (item != null) {
             player.addItem(item);
             System.out.println("You took the " + item.getName() + ": " + item.getDescription());
+
+            // Track if camping supplies were taken before meeting Oracle
+            if (item.getName().equalsIgnoreCase("Oracle's Camping Supplies") && !player.hasMetOracle()) {
+                player.setTookCampingSuppliesBeforeOracle(true);
+            }
         } else {
             System.out.println("No such item here.");
         }
@@ -266,6 +271,34 @@ public class Game {
                         System.out.println("\n" + player.getCharacterClass() + ": 'Can you translate these runes?'");
                         System.out.println(npc.getStoryPartial());
                     }
+
+                    // Handle camping supplies based on whether they were taken before meeting Oracle
+                    if (player.tookCampingSuppliesBeforeOracle()) {
+                        System.out.println("\nThe Oracle notices the camping supplies are missing and gives you a disapproving look.");
+                        System.out.println("Oracle: 'I see you helped yourself to my supplies before even introducing yourself. Such impatience is unbecoming of one who seeks wisdom.'");
+                    } else {
+                        // Check if supplies are still in the room
+                        boolean suppliesStillHere = false;
+                        for (Item item : currentRoom.getItems()) {
+                            if (item.getName().equalsIgnoreCase("Oracle's Camping Supplies")) {
+                                suppliesStillHere = true;
+                                break;
+                            }
+                        }
+
+                        if (suppliesStillHere) {
+                            System.out.println("\nOracle: 'You have listened well to my tale. As a reward for your patience and respect, I gift you these supplies for your journey ahead.'");
+                            // Oracle gives the supplies as a gift
+                            Item supplies = currentRoom.removeItem("Oracle's Camping Supplies");
+                            if (supplies != null) {
+                                player.addItem(supplies);
+                                System.out.println("The Oracle hands you the camping supplies.");
+                            }
+                        } else {
+                            System.out.println("\nOracle: 'You have listened well to my tale. May these insights serve you on your journey.'");
+                        }
+                    }
+
                     player.setOracleMet(true);
                     return;
                 }
@@ -366,7 +399,7 @@ public class Game {
     private String getNarrativeDescription(String roomName) {
         switch (roomName) {
             case "Oracle's Chamber":
-                return "You see a chamber filled with glowing magical runes covering the walls, and an enigmatic Oracle who seems to be staring at them as if deciphering their ancient secrets.";
+                return "You see a chamber filled with glowing magical runes covering the walls, and an enigmatic Oracle who seems to be staring at them as if deciphering their ancient secrets. Nearby, you notice some weathered camping supplies that appear to belong to the Oracle.";
             case "Pillars of Wisdom":
                 return "You see towering stone pillars engraved with forgotten knowledge, their shadows dancing mysteriously, and a wise Sage meditating among them in deep contemplation.";
             case "Pantheon of Gods":
