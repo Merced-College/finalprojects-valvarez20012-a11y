@@ -23,6 +23,10 @@ A mystical text-based adventure game where players explore divine chambers, coll
 - Character class selection (Warrior/Mage/Rogue)
 - NPC interactions with item-based hints
 - Brief room descriptions and atmospheric NPC dialogue
+- **NEW**: Available actions list displayed in every room for better player guidance
+- **NEW**: Story-consistent descriptions throughout all rooms, items, and NPCs
+- **NEW**: Enhanced storytelling with class-specific Oracle interactions
+- **NEW**: Perception-based narrative reveals for Mage characters
 
 ## Class Overview
 - **Main**: Entry point, starts the game
@@ -31,7 +35,7 @@ A mystical text-based adventure game where players explore divine chambers, coll
 - **Room**: Represents dungeon rooms with items and connections
 - **Dungeon**: Creates and connects rooms, explores via recursion
 - **Item**: Defines collectible items with name, description, value
-- **NPC**: Represents non-player characters with hints
+- **NPC**: Represents non-player characters with hints and storytelling capabilities
 
 ## Data Structures Used
 - **LinkedList**: For room sequences and player movement history
@@ -45,9 +49,26 @@ A mystical text-based adventure game where players explore divine chambers, coll
 - **Sorting Algorithm**: Bubble sort for sorting inventory items by value
 - **Searching Algorithm**: Linear search for finding items in inventory
 - **Simple Recursive Function**: For calculating player score based on items collected
+- **NEW**: Perception Check Algorithm: Random probability system for Mage class narrative reveals
+
+## Recent Updates
+
+### April 23, 2026 - Enhanced Game Progression and Story Consistency
+- **Added available actions list**: Every room now displays a comprehensive list of possible actions to guide player progression
+- **Story-consistent descriptions**: All rooms, items, and NPCs now follow the narrative established in the Oracle's Chamber about the condemned warrior
+- **Enhanced room descriptions**: Each room references the warrior's journey (Oracle's Chamber → Pillars of Wisdom → Pantheon of Gods → Labyrinth of Trials → Gateway to Eternity)
+- **Updated item lore**: Items now connect to the warrior's story (Divine Amulet from trial, Crystal Shard from verdict, etc.)
+- **Improved NPC interactions**: Sage and Oracle descriptions maintain narrative coherence
+
+### April 23, 2026 - Storytelling Features Implementation
+- **Fixed compilation error**: Resolved syntax error in NPC.java (extra closing brace)
+- **Added class-specific storytelling**: Oracle provides different narrative reveals based on player class
+- **Implemented perception checks**: Mage characters have 60% chance to see full story through magical perception
+- **Enhanced NPC system**: Added storytelling NPCs with introduction, partial, and full story capabilities
+- **Updated dungeon generation**: Integrated storytelling elements into world creation
 
 ## Contributors
 - Victor Alvarez (Individual Project)
 
 ## Development Notes
-This project was developed over multiple commits to demonstrate progressive development. All code is original with proper documentation and comments.
+This project was developed over multiple commits to demonstrate progressive development. All code is original with proper documentation and comments. The game features a cohesive narrative about a condemned warrior who crossed realms, with all elements (rooms, items, NPCs) maintaining story consistency throughout the player's journey.
