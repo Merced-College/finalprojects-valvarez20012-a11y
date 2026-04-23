@@ -84,8 +84,8 @@ public class Game {
             }
 
             // Check win condition
-            if (currentRoom.getName().equals("Exit")) {
-                System.out.println("Congratulations! You escaped the dungeon!");
+            if (currentRoom.getName().equals("Gateway to Eternity")) {
+                System.out.println("Congratulations! You have transcended to eternity!");
                 System.out.println("Final Score: " + player.getScore());
                 break;
             }
@@ -220,18 +220,18 @@ public class Game {
 
     private String getBriefDescription(String roomName) {
         switch (roomName) {
-            case "Entrance":
-                return "Dark and foreboding entryway with a cold draft.";
-            case "Hallway":
-                return "Long corridor with flickering torches and echoes.";
-            case "Treasure Room":
-                return "Glistening chamber filled with valuable treasures.";
-            case "Trap Room":
-                return "Dangerous area with hidden traps and obstacles.";
-            case "Exit":
-                return "Bright opening leading to freedom.";
+            case "Oracle's Chamber":
+                return "Mystical chamber with glowing runes and prophecies.";
+            case "Pillars of Wisdom":
+                return "Ancient pillars with engraved knowledge and shadows.";
+            case "Pantheon of Gods":
+                return "Grand hall with divine statues and sacred artifacts.";
+            case "Labyrinth of Trials":
+                return "Confusing maze with illusions and hidden dangers.";
+            case "Gateway to Eternity":
+                return "Shimmering portal to otherworldly realms.";
             default:
-                return "An unknown room.";
+                return "An unknown mystical chamber.";
         }
     }
 

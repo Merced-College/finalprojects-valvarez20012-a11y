@@ -19,40 +19,40 @@ public class Dungeon {
 
     private void createDungeon() {
         // Create rooms
-        Room entrance = new Room("Entrance", "The entrance to the ancient dungeon. A cold draft blows from deeper within.");
-        Room hallway = new Room("Hallway", "A long hallway with torches flickering on the walls.");
-        Room treasureRoom = new Room("Treasure Room", "A room filled with glittering treasures!");
-        Room trapRoom = new Room("Trap Room", "Watch your step! This room is filled with traps.");
-        Room exit = new Room("Exit", "The exit to freedom! Congratulations!");
+        Room oracleChamber = new Room("Oracle's Chamber", "A mystical chamber filled with ancient prophecies and glowing runes.");
+        Room pillarsWisdom = new Room("Pillars of Wisdom", "Tall stone pillars engraved with forgotten knowledge, casting long shadows.");
+        Room pantheonGods = new Room("Pantheon of Gods", "A grand hall dedicated to divine beings, with statues of deities watching over.");
+        Room labyrinthTrials = new Room("Labyrinth of Trials", "A confusing maze of passages, testing the worthy with illusions and traps.");
+        Room gatewayEternity = new Room("Gateway to Eternity", "A shimmering portal leading to realms beyond, the ultimate escape.");
 
         // Add items to rooms
-        treasureRoom.addItem(new Item("Gold Coin", "A shiny gold coin", 10));
-        treasureRoom.addItem(new Item("Silver Ring", "A beautiful silver ring", 20));
-        trapRoom.addItem(new Item("Magic Potion", "A potion that restores health", 15));
-        trapRoom.addItem(new Item("Ancient Key", "A rusty key that might open something", 5));
+        pantheonGods.addItem(new Item("Divine Amulet", "A sacred amulet blessed by the gods, radiating holy power", 25));
+        pantheonGods.addItem(new Item("Crystal Shard", "A fragment of ancient crystal, pulsing with magical energy", 15));
+        labyrinthTrials.addItem(new Item("Elixir of Clarity", "A potion that clears the mind and reveals hidden truths", 20));
+        labyrinthTrials.addItem(new Item("Oracle's Key", "A ornate key forged from mystical metals, said to unlock divine secrets", 30));
 
         // Add NPCs
-        entrance.addNpc(new NPC("Old Man", "A mysterious old man with piercing eyes, shrouded in the entrance's eerie shadows.", "Ancient Key", "That key looks familiar... I think it opens the way to the exit in the trap room."));
-        hallway.addNpc(new NPC("Guard", "A stern guard with a torch, standing watch in the flickering hallway.", "Magic Potion", "Ah, a potion! These are useful for healing wounds from traps."));
+        oracleChamber.addNpc(new NPC("Oracle", "A enigmatic oracle with glowing eyes, surrounded by mystical auras.", "Oracle's Key", "That key... it holds the power to open the Gateway to Eternity in the labyrinth."));
+        pillarsWisdom.addNpc(new NPC("Sage", "A wise sage meditating among the ancient pillars, emanating calm wisdom.", "Elixir of Clarity", "Ah, the Elixir! It can help one navigate the illusions of the labyrinth."));
 
         // Connect rooms
-        entrance.addConnection(hallway);
-        hallway.addConnection(entrance);
-        hallway.addConnection(treasureRoom);
-        hallway.addConnection(trapRoom);
-        treasureRoom.addConnection(hallway);
-        trapRoom.addConnection(hallway);
-        trapRoom.addConnection(exit);
-        exit.addConnection(trapRoom);
+        oracleChamber.addConnection(pillarsWisdom);
+        pillarsWisdom.addConnection(oracleChamber);
+        pillarsWisdom.addConnection(pantheonGods);
+        pillarsWisdom.addConnection(labyrinthTrials);
+        pantheonGods.addConnection(pillarsWisdom);
+        labyrinthTrials.addConnection(pillarsWisdom);
+        labyrinthTrials.addConnection(gatewayEternity);
+        gatewayEternity.addConnection(labyrinthTrials);
 
         // Add to room list
-        rooms.add(entrance);
-        rooms.add(hallway);
-        rooms.add(treasureRoom);
-        rooms.add(trapRoom);
-        rooms.add(exit);
+        rooms.add(oracleChamber);
+        rooms.add(pillarsWisdom);
+        rooms.add(pantheonGods);
+        rooms.add(labyrinthTrials);
+        rooms.add(gatewayEternity);
 
-        startRoom = entrance;
+        startRoom = oracleChamber;
     }
 
     public Room getStartRoom() {
