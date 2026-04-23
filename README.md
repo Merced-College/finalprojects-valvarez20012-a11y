@@ -3,4 +3,39 @@
 
 Upload your final project to this github repo.
 
-Make a README file for your project and put the infor about your project in it - your name, date and what your program does.
+# Dungeon Adventure Game
+
+## Project Description
+A text-based adventure game where players explore a dungeon, navigate through interconnected rooms using a linked list structure, collect items stored in a hash map inventory, and solve simple puzzles. The game demonstrates various data structures and algorithms in Java.
+
+## How to Run the Program
+1. Navigate to the `/src` directory
+2. Compile the Java files: `javac *.java`
+3. Run the main class: `java Main`
+
+## Features
+- Room navigation using linked list for room connections
+- Inventory management with HashMap
+- Item collection and usage
+- Simple scoring system
+- Undo functionality with Stack
+- Recursive room exploration algorithm
+
+## Data Structures Used
+- **LinkedList**: For room sequences and player movement history
+- **HashMap**: For player inventory (item name -> Item object)
+- **ArrayList**: For storing items in rooms and player stats
+- **Stack**: For undo moves functionality
+- **Queue**: For action/event queue (optional)
+
+## Algorithms Used
+- **Recursive Room Traversal**: For exploring connected rooms and finding paths
+- **Sorting Algorithm**: Bubble sort for sorting inventory items by value
+- **Searching Algorithm**: Linear search for finding items in inventory
+- **Simple Recursive Function**: For calculating player score based on items collected
+
+## Contributors
+- Victor Alvarez (Individual Project)
+
+## Development Notes
+This project was developed over multiple commits to demonstrate progressive development. All code is original with proper documentation and comments.

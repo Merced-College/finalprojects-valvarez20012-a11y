@@ -1,0 +1,25 @@
+# Dungeon Room Connections Diagram
+
+```
+Entrance ---- Hallway ---- Treasure Room
+             |              |
+             |              |
+             v              v
+          Trap Room ---- Exit
+```
+
+## Room Descriptions:
+- **Entrance**: Starting point
+- **Hallway**: Central hub connecting to other rooms
+- **Treasure Room**: Contains valuable items
+- **Trap Room**: Dangerous area with traps, leads to exit
+- **Exit**: Goal of the game
+
+## Connections:
+- Entrance ↔ Hallway
+- Hallway → Treasure Room
+- Hallway → Trap Room
+- Treasure Room → Hallway
+- Trap Room → Hallway
+- Trap Room → Exit
+- Exit → Trap Room
