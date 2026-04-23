@@ -14,10 +14,12 @@ public class Player {
     private String characterClass;
     private int health;
     private int score;
+    private boolean oracleMet;
     private HashMap<String, Item> inventory;
     private Stack<Room> movementHistory;
 
     public Player(String name, String characterClass) {
+        this.oracleMet = false;
         this.name = name;
         this.characterClass = characterClass;
         this.score = 0;
@@ -99,6 +101,14 @@ public class Player {
 
     public boolean canUndo() {
         return !movementHistory.isEmpty();
+    }
+
+    public boolean hasMetOracle() {
+        return oracleMet;
+    }
+
+    public void setOracleMet(boolean oracleMet) {
+        this.oracleMet = oracleMet;
     }
 
     @Override

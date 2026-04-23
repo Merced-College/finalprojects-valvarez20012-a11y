@@ -104,6 +104,10 @@ public class Game {
         System.out.println("\n" + currentRoom.getName());
         System.out.println(currentRoom.getDescription());
 
+        if (player.hasMetOracle() && !currentRoom.getName().equals("Oracle's Chamber")) {
+            System.out.println(getOracleRoomInsight(currentRoom));
+        }
+
         if (!currentRoom.getItems().isEmpty()) {
             System.out.println("Items here:");
             for (Item item : currentRoom.getItems()) {
@@ -276,6 +280,7 @@ public class Game {
                         System.out.println("\n" + player.getCharacterClass() + ": 'Can you translate these runes?'");
                         System.out.println(npc.getStoryPartial());
                     }
+                    player.setOracleMet(true);
                     return;
                 }
                 
@@ -327,6 +332,48 @@ public class Game {
                 return "Shimmering portal the condemned warrior used to flee between worlds.";
             default:
                 return "An unknown mystical chamber.";
+        }
+    }
+
+    private String getOracleRoomInsight(Room room) {
+        String roomName = room.getName();
+        String characterClass = player.getCharacterClass();
+
+        switch (roomName) {
+            case "Pillars of Wisdom":
+                if (characterClass.equalsIgnoreCase("Mage")) {
+                    return "The Oracle's visions reveal that the pillars hold hidden sigils of power that only a magical scholar can interpret.";
+                } else if (characterClass.equalsIgnoreCase("Rogue")) {
+                    return "The Oracle's tale makes the shadows feel alive here, as if secret passages and unseen eyes watch every step.";
+                } else {
+                    return "The Oracle reminds you that this hall once hosted the warrior's desperate search for answers before his trial.";
+                }
+            case "Pantheon of Gods":
+                if (characterClass.equalsIgnoreCase("Mage")) {
+                    return "The Oracle's vision uncovers the divine energy trapped in the statues, a clue to the warrior's fate in this court.";
+                } else if (characterClass.equalsIgnoreCase("Rogue")) {
+                    return "The Oracle's story shows you how the court's judges were both protector and prison, perfect for someone who reads people well.";
+                } else {
+                    return "The Oracle tells you this is the very hall where the condemned warrior was judged and found GUILTY.";
+                }
+            case "Labyrinth of Trials":
+                if (characterClass.equalsIgnoreCase("Mage")) {
+                    return "The Oracle's insight reveals the maze's illusions and the magical traps set to keep the warrior from escaping.";
+                } else if (characterClass.equalsIgnoreCase("Rogue")) {
+                    return "The Oracle warns that this maze is designed for those who move unseen, with hidden shortcuts waiting to be found.";
+                } else {
+                    return "The Oracle's story makes it clear: this labyrinth was the warrior's final escape route from his pursuers.";
+                }
+            case "Gateway to Eternity":
+                if (characterClass.equalsIgnoreCase("Mage")) {
+                    return "The Oracle shares the portal's true nature: a threshold between worlds that hums with raw cosmic energy.";
+                } else if (characterClass.equalsIgnoreCase("Rogue")) {
+                    return "The Oracle hints that this gate can be slipped through by those who move quickly and quietly.";
+                } else {
+                    return "The Oracle reveals that this portal is the same one the condemned warrior used to flee into another realm.";
+                }
+            default:
+                return "The Oracle's knowledge now helps you see the deeper meaning of this place.";
         }
     }
 
