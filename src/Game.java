@@ -134,8 +134,8 @@ public class Game {
 
     private void showAvailableActions() {
         System.out.println("\nAvailable actions:");
-        System.out.println("- look: Examine the room more closely with detailed item and NPC descriptions");
-        System.out.println("- brief: Get a brief description of this room");
+        System.out.println("- look: Get a narrative description of what you see in the room");
+        System.out.println("- brief: Examine the room with detailed item and NPC descriptions");
 
         if (!currentRoom.getConnectedRooms().isEmpty()) {
             System.out.println("- go <room>: Move to a connected room (e.g., go Pillars of Wisdom)");
@@ -164,8 +164,8 @@ public class Game {
         System.out.println("=== Dungeon Adventure Game Commands ===");
         System.out.println("Navigation & Exploration:");
         System.out.println("  go <room>     - Move to a connected room (e.g., go Pillars of Wisdom)");
-        System.out.println("  look          - Examine the room more closely with detailed item and NPC descriptions");
-        System.out.println("  brief         - Get a brief description of this room");
+        System.out.println("  look          - Get a narrative description of what you see in the room");
+        System.out.println("  brief         - Examine the room with detailed item and NPC descriptions");
         System.out.println("  undo          - Go back to the previous room (if available)");
         System.out.println();
         System.out.println("Interaction:");
@@ -184,31 +184,7 @@ public class Game {
     }
 
     private void lookAround() {
-        System.out.println("\n" + currentRoom.getName());
-        System.out.println(currentRoom.getDescription());
-
-        if (!currentRoom.getItems().isEmpty()) {
-            System.out.println("Items here:");
-            for (Item item : currentRoom.getItems()) {
-                System.out.println("- " + item.getName() + ": " + item.getDescription());
-            }
-        } else {
-            System.out.println("No items are visible right now.");
-        }
-
-        if (!currentRoom.getNpcs().isEmpty()) {
-            System.out.println("People here:");
-            for (NPC npc : currentRoom.getNpcs()) {
-                System.out.println("- " + npc.getName() + ": " + npc.getDescription());
-            }
-        } else {
-            System.out.println("No one else is present in this room.");
-        }
-
-        System.out.println("Connected rooms:");
-        for (Room room : currentRoom.getConnectedRooms()) {
-            System.out.println("- " + room.getName());
-        }
+        System.out.println(getNarrativeDescription(currentRoom.getName()));
     }
 
     private void move(String roomName) {
@@ -384,6 +360,23 @@ public class Game {
                 }
             default:
                 return "The Oracle's knowledge now helps you see the deeper meaning of this place.";
+        }
+    }
+
+    private String getNarrativeDescription(String roomName) {
+        switch (roomName) {
+            case "Oracle's Chamber":
+                return "You see a chamber filled with glowing magical runes covering the walls, and an enigmatic Oracle who seems to be staring at them as if deciphering their ancient secrets.";
+            case "Pillars of Wisdom":
+                return "You see towering stone pillars engraved with forgotten knowledge, their shadows dancing mysteriously, and a wise Sage meditating among them in deep contemplation.";
+            case "Pantheon of Gods":
+                return "You see a grand hall with divine statues watching over sacred artifacts, their stone eyes seeming to follow your every move with ancient judgment.";
+            case "Labyrinth of Trials":
+                return "You see twisting passages filled with illusions and hidden dangers, the air thick with mystery and the faint echo of footsteps long past.";
+            case "Gateway to Eternity":
+                return "You see a shimmering portal pulsing with otherworldly energy, a gateway between realms that hums with the power of infinite possibilities.";
+            default:
+                return "You see a mystical chamber filled with ancient wonders and hidden secrets waiting to be discovered.";
         }
     }
 

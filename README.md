@@ -23,8 +23,8 @@ A mystical text-based adventure game where players explore divine chambers, coll
 ## Game Commands
 ### Navigation & Exploration
 - `go <room>` - Move to a connected room
-- `look` - Examine the room with detailed item and NPC descriptions
-- `brief` - Get a brief description of the current room
+- `look` - Get a narrative description of what you see in the room
+- `brief` - Examine the room with detailed item and NPC descriptions
 - `undo` - Go back to the previous room
 
 ### Interaction
