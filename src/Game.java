@@ -194,9 +194,31 @@ public class Game {
     private void talkToNpc(String npcName) {
         for (NPC npc : currentRoom.getNpcs()) {
             if (npc.getName().equalsIgnoreCase(npcName)) {
-                System.out.println(npc.getDescription());
+                // Handle storytelling NPCs (like Oracle)
+                if (npc.isStorytellingNpc()) {
+                    System.out.println(npc.getStoryIntroduction());
+                    
+                    // Class-specific handling
+                    if (player.getCharacterClass().equalsIgnoreCase("Mage")) {
+                        // Mage gets a perception check
+                        if (attemptPerceptionCheck()) {
+                            System.out.println("\n[Perception Check: SUCCESS]");
+                            System.out.println(npc.getStoryFull());
+                        } else {
+                            System.out.println("\n[Perception Check: FAILED]");
+                            System.out.println(npc.getStoryPartial());
+                        }
+                    } else if (player.getCharacterClass().equalsIgnoreCase("Warrior") || 
+                               player.getCharacterClass().equalsIgnoreCase("Rogue")) {
+                        // Warriors and Rogues get the partial story from translated runes
+                        System.out.println("\n" + player.getCharacterClass() + ": 'Can you translate these runes?'");
+                        System.out.println(npc.getStoryPartial());
+                    }
+                    return;
+                }
                 
-                // Check for hints based on items
+                // Handle regular hint-based NPCs
+                System.out.println(npc.getDescription());
                 boolean gaveHint = false;
                 for (Item item : player.getInventory().values()) {
                     if (npc.hasHintForItem(item.getName())) {
@@ -212,6 +234,17 @@ public class Game {
             }
         }
         System.out.println("No one by that name here.");
+    }
+
+    /*
+    Algorithm: Perception Check (Random probability for Mage class)
+    Determines if the Mage can successfully read the full story from the runes.
+    Gives a 60% chance of success with randomness.
+    Time Complexity: O(1)
+    */
+    private boolean attemptPerceptionCheck() {
+        int roll = (int) (Math.random() * 100);
+        return roll < 60; // 60% success rate
     }
 
     private void showBrief() {

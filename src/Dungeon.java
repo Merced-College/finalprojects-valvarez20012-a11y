@@ -32,7 +32,25 @@ public class Dungeon {
         labyrinthTrials.addItem(new Item("Oracle's Key", "A ornate key forged from mystical metals, said to unlock divine secrets", 30));
 
         // Add NPCs
-        oracleChamber.addNpc(new NPC("Oracle", "A enigmatic oracle with glowing eyes, surrounded by mystical auras.", "Oracle's Key", "That key... it holds the power to open the Gateway to Eternity in the labyrinth."));
+        String oracleIntro = "The Oracle gestures to three images on the chamber walls:\n" +
+                            "  Image 1: A figure passing through a shimmering portal\n" +
+                            "  Image 2: A man being pursued through palace corridors\n" +
+                            "  Image 3: A court chamber where a verdict of 'GUILTY' is proclaimed\n\n" +
+                            "The Oracle speaks: 'These images tell a story, but the connection between them is obscured. What do you seek?'";
+        
+        String oraclePartial = "The Oracle translates the runes connecting the images:\n\n" +
+                              "The first image shows a warrior who passed through a gateway to this realm.\n" +
+                              "The second image shows this same warrior fleeing from kingdom guards.\n" +
+                              "The third image shows a trial with a guilty verdict pronounced.\n\n" +
+                              "[The Oracle keeps certain details hidden from you...]";
+        
+        String oracleFull = "The Oracle reveals the full story:\n\n" +
+                           "This is the tale of a warrior who passed through the Gateway before you.\n" +
+                           "He fled through the kingdom, pursued by those who sought him.\n" +
+                           "He stood trial in this very court... and was found GUILTY.\n\n" +
+                           "The warrior you see was judged harshly for crossing between worlds.";
+        
+        oracleChamber.addNpc(new NPC("Oracle", "An enigmatic oracle with glowing eyes, surrounded by mystical auras.", oracleIntro, oraclePartial, oracleFull));
         pillarsWisdom.addNpc(new NPC("Sage", "A wise sage meditating among the ancient pillars, emanating calm wisdom.", "Elixir of Clarity", "Ah, the Elixir! It can help one navigate the illusions of the labyrinth."));
 
         // Connect rooms
