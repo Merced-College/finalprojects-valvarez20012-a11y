@@ -116,7 +116,34 @@ public class Game {
         for (Room room : currentRoom.getConnectedRooms()) {
             System.out.println("- " + room.getName());
         }
+
+        // Show available actions
+        showAvailableActions();
         System.out.print("> ");
+    }
+
+    private void showAvailableActions() {
+        System.out.println("\nAvailable actions:");
+        System.out.println("- look: Examine the room more closely");
+        System.out.println("- brief: Get a brief description of this room");
+
+        if (!currentRoom.getConnectedRooms().isEmpty()) {
+            System.out.println("- go <room>: Move to a connected room");
+        }
+
+        if (!currentRoom.getItems().isEmpty()) {
+            System.out.println("- take <item>: Pick up an item from the room");
+        }
+
+        if (!currentRoom.getNpcs().isEmpty()) {
+            System.out.println("- talk <person>: Speak with someone in the room");
+        }
+
+        System.out.println("- inventory: Check your inventory");
+        System.out.println("- status: View your current status");
+        System.out.println("- undo: Go back to the previous room");
+        System.out.println("- help: Show all available commands");
+        System.out.println("- quit: Exit the game");
     }
 
     private String getCommand() {
@@ -254,15 +281,15 @@ public class Game {
     private String getBriefDescription(String roomName) {
         switch (roomName) {
             case "Oracle's Chamber":
-                return "Mystical chamber with glowing runes and prophecies.";
+                return "Mystical chamber with glowing runes depicting the condemned warrior's tale.";
             case "Pillars of Wisdom":
-                return "Ancient pillars with engraved knowledge and shadows.";
+                return "Ancient pillars that witnessed the warrior's desperate search for answers.";
             case "Pantheon of Gods":
-                return "Grand hall with divine statues and sacred artifacts.";
+                return "Divine court chamber where the warrior was judged and found GUILTY.";
             case "Labyrinth of Trials":
-                return "Confusing maze with illusions and hidden dangers.";
+                return "Twisting maze that served as the warrior's escape route from pursuers.";
             case "Gateway to Eternity":
-                return "Shimmering portal to otherworldly realms.";
+                return "Shimmering portal the condemned warrior used to flee between worlds.";
             default:
                 return "An unknown mystical chamber.";
         }

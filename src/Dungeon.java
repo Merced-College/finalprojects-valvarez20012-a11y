@@ -18,20 +18,20 @@ public class Dungeon {
     }
 
     private void createDungeon() {
-        // Create rooms
-        Room oracleChamber = new Room("Oracle's Chamber", "A mystical chamber filled with ancient prophecies and glowing runes.");
-        Room pillarsWisdom = new Room("Pillars of Wisdom", "Tall stone pillars engraved with forgotten knowledge, casting long shadows.");
-        Room pantheonGods = new Room("Pantheon of Gods", "A grand hall dedicated to divine beings, with statues of deities watching over.");
-        Room labyrinthTrials = new Room("Labyrinth of Trials", "A confusing maze of passages, testing the worthy with illusions and traps.");
-        Room gatewayEternity = new Room("Gateway to Eternity", "A shimmering portal leading to realms beyond, the ultimate escape.");
+        // Create rooms with story-consistent descriptions
+        Room oracleChamber = new Room("Oracle's Chamber", "A mystical chamber filled with ancient prophecies and glowing runes. The walls depict the tragic tale of a warrior who crossed realms and faced judgment.");
+        Room pillarsWisdom = new Room("Pillars of Wisdom", "Tall stone pillars engraved with forgotten knowledge, casting long shadows. These pillars once witnessed the warrior's desperate search for answers before his trial.");
+        Room pantheonGods = new Room("Pantheon of Gods", "A grand hall dedicated to divine beings, with statues of deities watching over. This was the court chamber where the warrior stood trial and was proclaimed GUILTY by the divine judges.");
+        Room labyrinthTrials = new Room("Labyrinth of Trials", "A confusing maze of passages that once served as the warrior's escape route, pursued by kingdom guards through these twisting corridors of judgment.");
+        Room gatewayEternity = new Room("Gateway to Eternity", "A shimmering portal leading to realms beyond, the same gateway the condemned warrior used to flee into this mystical realm, forever marked by his transgression.");
 
-        // Add items to rooms
-        pantheonGods.addItem(new Item("Divine Amulet", "A sacred amulet blessed by the gods, radiating holy power", 25));
-        pantheonGods.addItem(new Item("Crystal Shard", "A fragment of ancient crystal, pulsing with magical energy", 15));
-        labyrinthTrials.addItem(new Item("Elixir of Clarity", "A potion that clears the mind and reveals hidden truths", 20));
-        labyrinthTrials.addItem(new Item("Oracle's Key", "A ornate key forged from mystical metals, said to unlock divine secrets", 30));
+        // Add items to rooms with story-consistent descriptions
+        pantheonGods.addItem(new Item("Divine Amulet", "A sacred amulet that once belonged to the warrior during his trial, bearing the mark of divine judgment", 25));
+        pantheonGods.addItem(new Item("Crystal Shard", "A fragment of the crystal that shattered during the warrior's guilty verdict, still pulsing with the echoes of judgment", 15));
+        labyrinthTrials.addItem(new Item("Elixir of Clarity", "A potion that clears the mind, much like the clarity the warrior sought during his frantic escape through these passages", 20));
+        labyrinthTrials.addItem(new Item("Oracle's Key", "The ornate key that unlocked the warrior's fate, forged from mystical metals and bearing the weight of his condemnation", 30));
 
-        // Add NPCs
+        // Add NPCs with story-consistent descriptions
         String oracleIntro = "The Oracle gestures to three images on the chamber walls:\n" +
                             "  Image 1: A figure passing through a shimmering portal\n" +
                             "  Image 2: A man being pursued through palace corridors\n" +
@@ -50,8 +50,8 @@ public class Dungeon {
                            "He stood trial in this very court... and was found GUILTY.\n\n" +
                            "The warrior you see was judged harshly for crossing between worlds.";
         
-        oracleChamber.addNpc(new NPC("Oracle", "An enigmatic oracle with glowing eyes, surrounded by mystical auras.", oracleIntro, oraclePartial, oracleFull));
-        pillarsWisdom.addNpc(new NPC("Sage", "A wise sage meditating among the ancient pillars, emanating calm wisdom.", "Elixir of Clarity", "Ah, the Elixir! It can help one navigate the illusions of the labyrinth."));
+        oracleChamber.addNpc(new NPC("Oracle", "An enigmatic oracle with glowing eyes, surrounded by mystical auras. The Oracle witnessed the warrior's trial and knows the full story of his condemnation.", oracleIntro, oraclePartial, oracleFull));
+        pillarsWisdom.addNpc(new NPC("Sage", "A wise sage meditating among the ancient pillars, emanating calm wisdom. The Sage once counseled the condemned warrior during his search for redemption.", "Elixir of Clarity", "Ah, the Elixir! It can help one navigate the illusions of the labyrinth, much like it might have helped the warrior during his desperate flight."));
 
         // Connect rooms
         oracleChamber.addConnection(pillarsWisdom);
