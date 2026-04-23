@@ -63,8 +63,12 @@ public class Game {
                 break;
             } else if (command.equals("help")) {
                 showHelp();
+            } else if (command.equals("go")) {
+                System.out.println("Usage: go <room>. Example: go Pillars of Wisdom");
             } else if (command.startsWith("go ")) {
                 move(command.substring(3));
+            } else if (command.equals("take")) {
+                System.out.println("Usage: take <item>. Example: take Oracle's Key");
             } else if (command.startsWith("take ")) {
                 takeItem(command.substring(5));
             } else if (command.equals("inventory")) {
@@ -73,6 +77,8 @@ public class Game {
                 lookAround();
             } else if (command.equals("undo")) {
                 undoMove();
+            } else if (command.equals("talk")) {
+                System.out.println("Usage: talk <person>. Example: talk Oracle");
             } else if (command.startsWith("talk ")) {
                 talkToNpc(command.substring(5));
             } else if (command.equals("brief")) {
@@ -196,6 +202,7 @@ public class Game {
             if (room.getName().toLowerCase().equals(roomName.toLowerCase())) {
                 currentRoom = room;
                 player.pushMovement(currentRoom);
+                System.out.println("You move to " + currentRoom.getName() + ".");
                 return;
             }
         }
@@ -206,7 +213,7 @@ public class Game {
         Item item = currentRoom.removeItem(itemName);
         if (item != null) {
             player.addItem(item);
-            System.out.println("You took the " + item.getName());
+            System.out.println("You took the " + item.getName() + ": " + item.getDescription());
         } else {
             System.out.println("No such item here.");
         }
@@ -221,7 +228,7 @@ public class Game {
             ArrayList<Item> items = new ArrayList<>(player.getInventory().values());
             bubbleSort(items);
             for (Item item : items) {
-                System.out.println("- " + item);
+                System.out.println("- " + item.getName() + ": " + item.getDescription() + " (Value: " + item.getValue() + ")");
             }
         }
     }
