@@ -6,7 +6,7 @@ Upload your final project to this github repo.
 # Dungeon Adventure Game
 
 ## Project Description
-A text-based adventure game where players explore a dungeon, navigate through interconnected rooms using a linked list structure, collect items stored in a hash map inventory, and solve simple puzzles. The game demonstrates various data structures and algorithms in Java.
+A mystical text-based adventure game where players explore divine chambers, collect sacred artifacts, and seek enlightenment through the Oracle's Pillars and Pantheon. The game demonstrates various data structures and algorithms in Java, featuring character classes, NPC interactions, and atmospheric storytelling.
 
 ## How to Run the Program
 1. Navigate to the `/src` directory
