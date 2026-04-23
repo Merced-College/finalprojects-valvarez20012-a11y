@@ -13,6 +13,13 @@ A mystical text-based adventure game where players explore divine chambers, coll
 2. Compile the Java files: `javac *.java`
 3. Run the main class: `java Main`
 
+## Input Labels
+- **Name**: Your player name
+- **Character class**: Choose `Warrior`, `Mage`, or `Rogue`
+- **Room**: Use the room name exactly as shown when moving
+- **Item**: Use the item name exactly as shown when taking objects
+- **Person**: Use the NPC name exactly as shown when talking
+
 ## Features
 - Room navigation using linked list for room connections
 - Inventory management with HashMap
