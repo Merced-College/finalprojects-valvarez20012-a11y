@@ -134,25 +134,25 @@ public class Game {
 
     private void showAvailableActions() {
         System.out.println("\nAvailable actions:");
-        System.out.println("- look: Examine the room more closely");
+        System.out.println("- look: Examine the room more closely with detailed item and NPC descriptions");
         System.out.println("- brief: Get a brief description of this room");
 
         if (!currentRoom.getConnectedRooms().isEmpty()) {
-            System.out.println("- go <room>: Move to a connected room");
+            System.out.println("- go <room>: Move to a connected room (e.g., go Pillars of Wisdom)");
         }
 
         if (!currentRoom.getItems().isEmpty()) {
-            System.out.println("- take <item>: Pick up an item from the room");
+            System.out.println("- take <item>: Pick up an item from the room (e.g., take Oracle's Key)");
         }
 
         if (!currentRoom.getNpcs().isEmpty()) {
-            System.out.println("- talk <person>: Speak with someone in the room");
+            System.out.println("- talk <person>: Speak with someone in the room (e.g., talk Oracle)");
         }
 
-        System.out.println("- inventory: Check your inventory");
-        System.out.println("- status: View your current status");
-        System.out.println("- undo: Go back to the previous room");
-        System.out.println("- help: Show all available commands");
+        System.out.println("- inventory: Check your inventory with item descriptions and values");
+        System.out.println("- status: View your current status (health, score, inventory count)");
+        System.out.println("- undo: Go back to the previous room (if available)");
+        System.out.println("- help: Show detailed command list with descriptions");
         System.out.println("- quit: Exit the game");
     }
 
@@ -161,16 +161,26 @@ public class Game {
     }
 
     private void showHelp() {
-        System.out.println("Commands:");
-        System.out.println("go <room> - Move to a connected room");
-        System.out.println("take <item> - Take an item from the current room");
-        System.out.println("talk <npc> - Talk to a person in the room");
-        System.out.println("brief - Get a brief description of the room");
-        System.out.println("inventory - Show your inventory");
-        System.out.println("look - Look around the current room with item and NPC details");
-        System.out.println("undo - Undo last move");
-        System.out.println("status - Show player status");
-        System.out.println("quit - Quit the game");
+        System.out.println("=== Dungeon Adventure Game Commands ===");
+        System.out.println("Navigation & Exploration:");
+        System.out.println("  go <room>     - Move to a connected room (e.g., go Pillars of Wisdom)");
+        System.out.println("  look          - Examine the room more closely with detailed item and NPC descriptions");
+        System.out.println("  brief         - Get a brief description of this room");
+        System.out.println("  undo          - Go back to the previous room (if available)");
+        System.out.println();
+        System.out.println("Interaction:");
+        System.out.println("  take <item>   - Pick up an item from the room (e.g., take Oracle's Key)");
+        System.out.println("  talk <person> - Speak with someone in the room (e.g., talk Oracle)");
+        System.out.println();
+        System.out.println("Information:");
+        System.out.println("  inventory     - Check your inventory with item descriptions and values");
+        System.out.println("  status        - View your current status (health, score, inventory count)");
+        System.out.println("  help          - Show this detailed command list");
+        System.out.println();
+        System.out.println("Game Control:");
+        System.out.println("  quit          - Exit the game");
+        System.out.println();
+        System.out.println("Note: After meeting the Oracle, you'll unlock special story insights for each room!");
     }
 
     private void lookAround() {

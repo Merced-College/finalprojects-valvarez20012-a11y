@@ -16,9 +16,28 @@ A mystical text-based adventure game where players explore divine chambers, coll
 ## Input Labels
 - **Name**: Your player name
 - **Character class**: Choose `Warrior`, `Mage`, or `Rogue`
-- **Room**: Use the room name exactly as shown when moving
-- **Item**: Use the item name exactly as shown when taking objects
-- **Person**: Use the NPC name exactly as shown when talking
+- **Room**: Use the room name exactly as shown when moving (e.g., "Pillars of Wisdom")
+- **Item**: Use the item name exactly as shown when taking objects (e.g., "Oracle's Key")
+- **Person**: Use the NPC name exactly as shown when talking (e.g., "Oracle")
+
+## Game Commands
+### Navigation & Exploration
+- `go <room>` - Move to a connected room
+- `look` - Examine the room with detailed item and NPC descriptions
+- `brief` - Get a brief description of the current room
+- `undo` - Go back to the previous room
+
+### Interaction
+- `take <item>` - Pick up an item from the room
+- `talk <person>` - Speak with someone in the room
+
+### Information
+- `inventory` - Check your inventory with descriptions and values
+- `status` - View your current status (health, score, inventory count)
+- `help` - Show detailed command list
+
+### Game Control
+- `quit` - Exit the game
 
 ## Features
 - Room navigation using linked list for room connections
