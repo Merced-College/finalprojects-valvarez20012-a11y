@@ -98,3 +98,78 @@ A mystical text-based adventure game where players explore divine chambers, coll
 
 ## Development Notes
 This project was developed over multiple commits to demonstrate progressive development. All code is original with proper documentation and comments. The game features a cohesive narrative about a condemned warrior who crossed realms, with all elements (rooms, items, NPCs) maintaining story consistency throughout the player's journey.
+
+Development Changes for Eclipse Compatibility
+
+During development, several structural and runtime changes were made to ensure the project runs correctly in Eclipse and meets assignment requirements.
+
+1. Scanner and Input Handling Fix
+Replaced multiple Scanner instances with a single global Scanner
+Removed scanner.close() calls to prevent NoSuchElementException
+Eliminated try-with-resources blocks that were closing System.in
+2. Project Structure Standardization
+Organized all classes into separate .java files:
+Main, Game, Dungeon, Room, Player, Item, GameRecord
+Ensured the correct entry point (Main.java) for Eclipse execution
+Removed Ant-based configuration issues by converting to a standard Java project
+3. Room and Navigation System Rewrite
+Replaced earlier navigation logic with a linear room progression system
+Each room now enforces completion of its encounter before allowing movement
+Fixed missing method issues (e.g., undefined addRoom) by standardizing Room.java
+4. Gameplay Flow Redesign
+Converted free-text commands into a menu-driven system
+Added structured progression:
+Oracle introduction
+Painting encounter
+Witness encounter
+Rune encounter
+Evidence encounter
+Final judgment with Pantheon
+Ensured all transitions work without dead-ends or soft locks
+5. Data Structure Integration
+
+Implemented required data structures directly into gameplay:
+
+Array → Evidence items
+HashMap → Inventory and ending tracking
+Stack → Undo system
+LinkedList → Player path tracking
+Queue → Event messages
+6. Algorithm Implementation
+
+Added and stabilized required algorithms:
+
+Movement validation (ensures room completion)
+Ending decision logic (based on class, choices, and score)
+Recursive path depth calculation
+7. Ending System Expansion
+Added multiple endings:
+True Ending
+Loop Ending
+Mage Deceived Ending
+Perfect Deduction Ending
+Implemented ending tracking system using HashMap
+Added menu option to view discovered endings
+8. Bug Fixes and Stability Improvements
+Fixed crash when no input was available
+Prevented movement before completing puzzles
+Fixed logic errors in room progression
+Ensured all methods referenced are defined
+Removed unused or conflicting code from earlier versions
+9. User Interface Improvements
+Added numbered menu system for easier navigation
+Standardized input handling across all actions
+Improved clarity of player choices and feedback
+10. Documentation and Code Clarity
+Added comments explaining:
+Data structures
+Algorithms
+Game flow
+Ensured code readability and maintainability
+📌 Summary
+
+These changes ensured that:
+
+The program runs without errors in Eclipse
+All assignment requirements are fully implemented
+The game has a clear structure, stable execution, and complete feature set

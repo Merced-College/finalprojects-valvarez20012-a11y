@@ -8,12 +8,10 @@ Uses basic data structures like strings for name and description.
 */
 public class Item {
     private String name;
-    private String description;
     private int value;
 
-    public Item(String name, String description, int value) {
+    public Item(String name, int value) {
         this.name = name;
-        this.description = description;
         this.value = value;
     }
 
@@ -21,16 +19,7 @@ public class Item {
         return name;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public int getValue() {
         return value;
-    }
-
-    @Override
-    public String toString() {
-        return name + " (" + description + ") - Value: " + value;
     }
 }
